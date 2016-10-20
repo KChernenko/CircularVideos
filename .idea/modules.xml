@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/CircularVideos.iml" filepath="$PROJECT_DIR$/CircularVideos.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/vr-libraries/audio/audio.iml" filepath="$PROJECT_DIR$/vr-libraries/audio/audio.iml" />
+      <module fileurl="file://$PROJECT_DIR$/vr-libraries/base/base.iml" filepath="$PROJECT_DIR$/vr-libraries/base/base.iml" />
+      <module fileurl="file://$PROJECT_DIR$/vr-libraries/common/common.iml" filepath="$PROJECT_DIR$/vr-libraries/common/common.iml" />
+      <module fileurl="file://$PROJECT_DIR$/vr-libraries/commonwidget/commonwidget.iml" filepath="$PROJECT_DIR$/vr-libraries/commonwidget/commonwidget.iml" />
+      <module fileurl="file://$PROJECT_DIR$/vr-libraries/videowidget/videowidget.iml" filepath="$PROJECT_DIR$/vr-libraries/videowidget/videowidget.iml" />
+      <module fileurl="file://$PROJECT_DIR$/vr-libraries/vr-libraries.iml" filepath="$PROJECT_DIR$/vr-libraries/vr-libraries.iml" />
+    </modules>
+  </component>
+</project>

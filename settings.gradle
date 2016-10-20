@@ -1,0 +1,6 @@
+include ':app'
+include ':vr-libraries:base'
+include ':vr-libraries:common'
+include ':vr-libraries:audio'
+include ':vr-libraries:commonwidget'
+include ':vr-libraries:videowidget'
