@@ -27,10 +27,62 @@ android {
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
 
+    signingConfigs {
+        release {
+            def Properties rProps = new Properties()
+            def rpFile = file('release_signing.properties')
+            if (rpFile.canRead()){
+                rProps.load(new FileInputStream(rpFile))
+
+                if (rProps != null && rProps.containsKey('STORE_FILE') && rProps.containsKey('STORE_PASSWORD') &&
+                        rProps.containsKey('KEY_ALIAS') && rProps.containsKey('KEY_PASSWORD')) {
+                    storeFile = file(rProps['STORE_FILE'])
+                    storePassword = rProps['STORE_PASSWORD']
+                    keyAlias = rProps['KEY_ALIAS']
+                    keyPassword = rProps['KEY_PASSWORD']
+                } else {
+                    throw new GradleException("release_signing.properties found but some entries are missing")
+                }
+            } else {
+                throw new GradleException("release_signing.properties not found")
+            }
+        }
+
+        debug {
+            def Properties dProps = new Properties()
+            def dpFile = file('debug_signing.properties')
+            if (dpFile.canRead()){
+                dProps.load(new FileInputStream(dpFile))
+
+                if (dProps != null && dProps.containsKey('STORE_FILE') && dProps.containsKey('STORE_PASSWORD') &&
+                        dProps.containsKey('KEY_ALIAS') && dProps.containsKey('KEY_PASSWORD')) {
+                    storeFile = file(dProps['STORE_FILE'])
+                    storePassword = dProps['STORE_PASSWORD']
+                    keyAlias = dProps['KEY_ALIAS']
+                    keyPassword = dProps['KEY_PASSWORD']
+                } else {
+                    throw new GradleException("debug_signing.properties found but some entries are missing")
+                }
+            } else {
+                throw new GradleException("debug_signing.properties not found")
+            }
+        }
+    }
+
     buildTypes {
         release {
-            minifyEnabled false
+            minifyEnabled true
+            debuggable false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            ext.betaDistributionReleaseNotesFilePath =
+                    file('../crashlytics_release_notes.txt').absolutePath
+            signingConfig signingConfigs.release
+        }
+
+        debug {
+            debuggable true
+            versionNameSuffix ".dev"
+            signingConfig signingConfigs.debug
         }
     }
 
@@ -42,6 +94,16 @@ android {
     dexOptions {
         maxProcessCount 4
         javaMaxHeapSize "4g"
+    }
+
+    sourceSets {
+        def commonTestDir = 'src/commonTest/java'
+        test {
+            java.srcDir commonTestDir
+        }
+        androidTest {
+            java.srcDir commonTestDir
+        }
     }
 
     //noinspection GroovyMissingReturnStatement
