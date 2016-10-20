@@ -1,17 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.percent.PercentRelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/activity_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="me.bitfrom.circularvideos.MainActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
+    <com.google.vr.sdk.widgets.video.VrVideoView
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        android:id="@+id/video_view"
+        android:scrollbars="none"/>
+    <SeekBar
+        android:layout_height="32dp"
+        app:layout_widthPercent="90%"
+        android:id="@+id/seek_bar"
+        android:layout_below="@id/video_view"/>
+    <ImageButton
         android:layout_height="wrap_content"
-        android:text="Hello World!" />
-</RelativeLayout>
+        app:layout_widthPercent="10%"
+        android:id="@+id/volume_toggle"
+        android:layout_toEndOf="@id/seek_bar"
+        android:layout_below="@id/video_view"
+        android:src="@mipmap/ic_volume_on"
+        android:paddingStart="0dp"
+        android:paddingTop="4dp"
+        android:paddingEnd="0dp"
+        android:background="@android:color/transparent"
+        android:contentDescription="@string/volume_regulator"/>
+    <TextView
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:id="@+id/status_text"
+        android:layout_centerInParent="true"
+        android:paddingEnd="32dp"
+        android:paddingStart="32dp"
+        android:textSize="12sp"
+        android:text="@string/loading_video"/>
+</android.support.percent.PercentRelativeLayout>
