@@ -3,18 +3,39 @@
 buildscript {
     repositories {
         jcenter()
+        maven {
+            url "https://oss.sonatype.org/content/repositories/snapshots"
+        }
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:2.2.1'
+        //Gradle plugins
+        final androidGradlePlugin       = '2.2.1'
+        final aptGradlePlugin           = '1.8'
+        final sqlDelight                = '0.4.4'
+        final retrolambdaGradlePlugin   = '3.3.1'
+        final lombokGradlePlugin        = '0.2.3.a2'
 
-        // NOTE: Do not place your application dependencies here; they belong
-        // in the individual module build.gradle files
+        classpath "com.android.tools.build:gradle:$androidGradlePlugin"
+
+        // Compile-time annotation processing.
+        classpath "com.neenbedankt.gradle.plugins:android-apt:$aptGradlePlugin"
+
+        //SqlDelight
+        classpath "com.squareup.sqldelight:gradle-plugin:$sqlDelight"
+
+        // Backport of some Java 8 language features such as Lambdas and method references.
+        classpath "me.tatarka:gradle-retrolambda:$retrolambdaGradlePlugin"
+
+        // Needed for Lint + Retrolambda.
+        classpath "me.tatarka.retrolambda.projectlombok:lombok.ast:$lombokGradlePlugin"
     }
 }
 
 allprojects {
     repositories {
         jcenter()
+        maven { url "https://oss.sonatype.org/content/repositories/snapshots" }
+        maven { url "https://dl.bintray.com/terrakok/terramaven" }
     }
 }
 
