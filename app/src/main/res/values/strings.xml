@@ -2,4 +2,12 @@
     <string name="app_name">CircularVideos</string>
     <string name="loading_video">Loading video…</string>
     <string name="volume_regulator">Volume regulator</string>
+
+    <!-- Playback strings -->
+    <string name="details_activity_player_paused">Paused:\u0020</string>
+    <string name="details_activity_player_resumed">Playing:\u0020</string>
+    <string name="details_activity_playback_divider">\u0020/\u0020</string>
+    <string name="details_activity_player_seconds">\u0020seconds.</string>
+    <string name="details_activity_error_loading_video">Error loading video:\u0020</string>
+    <string name="details_activity_error_opening_file">Error opening file.\u0020</string>
 </resources>
